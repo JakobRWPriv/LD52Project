@@ -258,7 +258,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.07155571, g: 0.2264151, b: 0.123572804, a: 0}
+  m_BackGroundColor: {r: 0.08951633, g: 0.070588246, b: 0.22745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -275,7 +275,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.75
+  orthographic size: 10.6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -409,7 +409,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 90
   m_Sprite: {fileID: -7278875586737723623, guid: 41d7ce37eed573846ae5d3a474ae11b5, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.08316502, g: 0.3018868, b: 0.064079754, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -547,7 +547,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 90
   m_Sprite: {fileID: 21300000, guid: 92c6eec59a8edd2428f69935c5e99114, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.08316502, g: 0.3018868, b: 0.064079754, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -629,7 +629,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 100
   m_Sprite: {fileID: -681717698333359285, guid: 024a48d0e5456ec41a915352dbc42b2c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5697962, g: 1, b: 0.43867922, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -711,7 +711,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 1f8b622fdc21ca949ad71311da0109ba, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5697962, g: 1, b: 0.43867922, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -925,7 +925,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 90
   m_Sprite: {fileID: -82226516621406835, guid: 024a48d0e5456ec41a915352dbc42b2c, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.08316502, g: 0.3018868, b: 0.064079754, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -962,9 +962,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1695716453}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba732bcb31837d42a7b5cdf003ab50e, type: 3}
+  m_Script: {fileID: 11500000, guid: 4461fcdcbb57a76449c650aeb6eae259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb2d: {fileID: 1695716456}
+  animator: {fileID: 1231800457}
+  rotationTimer: 0
 --- !u!4 &1695716455
 Transform:
   m_ObjectHideFlags: 0
@@ -995,7 +998,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0
@@ -1167,7 +1170,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 100
   m_Sprite: {fileID: 5626815426137393680, guid: 41d7ce37eed573846ae5d3a474ae11b5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5697962, g: 1, b: 0.43867922, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

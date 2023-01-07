@@ -36,7 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\PlayerScript.cs" />
+     <Compile Include="Assets\PlayerBehaviour.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/2020.3.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
