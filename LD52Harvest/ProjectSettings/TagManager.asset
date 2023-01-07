@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Farmer
+    uniqueID: 2478464253
+    locked: 0
   - name: Player
     uniqueID: 1889469237
     locked: 0
