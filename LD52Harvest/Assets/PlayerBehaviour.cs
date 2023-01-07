@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    public GameController gameController;
     public Rigidbody2D rb2d;
     public Animator animator;
+    public BoxCollider2D grabCollider;
+    public ThrownFingers thrownFingers;
 
     float speed;
     float speedToSet;
     float speedSmoothing;
 
+    public float myRotationSpeed;
     float myRotation;
     float rotationToSet;
     float rotationSmoothing;
@@ -19,6 +23,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     public bool isDashing;
     bool canDash = true;
+
+    public bool isHolding;
+    bool canGrab = true;
+    public SpriteRenderer[] normalHandSprites;
+    public SpriteRenderer[] holdingHandSprites;
+    public SpriteRenderer[] fingerSprites;
+    public SpriteRenderer[] throwHandSprites;
     
     void Start() {
         
@@ -35,7 +46,16 @@ public class PlayerBehaviour : MonoBehaviour
             rotationTimer = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.X) && canDash) {
+        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Y)) {
+            if (!isHolding && canGrab) {
+                StartCoroutine(Grab());
+            }
+            if (isHolding) {
+                StartCoroutine(Throw());
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.X) && canDash && Input.GetKey(KeyCode.UpArrow)) {
             canDash = false;
             isDashing = true;
             StartCoroutine(Dash());
@@ -46,32 +66,32 @@ public class PlayerBehaviour : MonoBehaviour
             animator.SetInteger("TurnDir", 1);
             rotationTimer += Time.deltaTime;
             
-            myRotation -= 1.2f;
+            myRotation -= myRotationSpeed * Time.deltaTime;
             if (!isDashing) {
                 if (rotationTimer > 0.3f) {
-                    myRotation -= 0.5f;
+                    myRotation -= (myRotationSpeed * 0.6f) * Time.deltaTime;
                 }
                 if (rotationTimer > 0.6f) {
-                    myRotation -= 0.5f;
+                    myRotation -= (myRotationSpeed * 0.6f) * Time.deltaTime;
                 }
             } else {
-                myRotation -= 3f;
+                myRotation -= (myRotationSpeed * 3) * Time.deltaTime;
             }
         }
         if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow)) {
             animator.SetInteger("TurnDir", 2);
             rotationTimer += Time.deltaTime;
             
-            myRotation += 1.2f;
+            myRotation += myRotationSpeed * Time.deltaTime;
             if (!isDashing) {
                 if (rotationTimer > 0.3f) {
-                    myRotation += 0.5f;
+                    myRotation += (myRotationSpeed * 0.6f) * Time.deltaTime;
                 }
                 if (rotationTimer > 0.6f) {
-                    myRotation += 0.5f;
+                    myRotation += (myRotationSpeed * 0.6f) * Time.deltaTime;
                 }
             } else {
-                myRotation += 3f;
+                myRotation += (myRotationSpeed * 3) * Time.deltaTime;
             }
         }
 
@@ -108,6 +128,77 @@ public class PlayerBehaviour : MonoBehaviour
         }
         yield return new WaitForSeconds(0.5f);
         canDash = true;
+    }
+
+    IEnumerator Grab() {
+        canGrab = false;
+        animator.SetTrigger("Grab");
+        foreach(SpriteRenderer sr in normalHandSprites) {
+            sr.enabled = false;
+        }
+        foreach(SpriteRenderer sr in holdingHandSprites) {
+            sr.enabled = true;
+        }
+        grabCollider.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        grabCollider.enabled = false;
+
+        
+        yield return new WaitForSeconds(0.4f);
+
+        if (!isHolding) {
+            foreach(SpriteRenderer sr in normalHandSprites) {
+                sr.enabled = true;
+            }
+            foreach(SpriteRenderer sr in holdingHandSprites) {
+                sr.enabled = false;
+            }
+        }
+
+        yield return new WaitForSeconds(0.2f);
+        
+        if (!isHolding) {
+            canGrab = true;
+        }
+    }
+
+    IEnumerator Throw() {
+        animator.SetTrigger("Throw");
+        foreach(SpriteRenderer sr in holdingHandSprites) {
+            sr.enabled = false;
+        }
+        foreach(SpriteRenderer sr in throwHandSprites) {
+            sr.enabled = true;
+        }
+        isHolding = false;
+        foreach(SpriteRenderer sr in fingerSprites) {
+            sr.enabled = false;
+        }
+
+        ThrownFingers fingers = Instantiate(thrownFingers, transform.position, Quaternion.identity);
+        fingers.GetThrown(transform.eulerAngles.z, gameController);
+        fingers.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(0.4f);
+
+        foreach(SpriteRenderer sr in throwHandSprites) {
+            sr.enabled = false;
+        }
+        foreach(SpriteRenderer sr in normalHandSprites) {
+            sr.enabled = true;
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        canGrab = true;
+    }
+
+    public void SuccessfulGrab(Color color) {
+        isHolding = true;
+        foreach(SpriteRenderer sr in fingerSprites) {
+            sr.color = color;
+            sr.enabled = true;
+        }
     }
 
     void FixedUpdate() {

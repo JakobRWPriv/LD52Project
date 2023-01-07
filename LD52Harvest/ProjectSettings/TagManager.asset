@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PlayerGrab
+  - Wheelbarrow
   layers:
   - Default
   - TransparentFX
@@ -41,8 +43,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Plants
+    uniqueID: 1410393627
+    locked: 0
   - name: Farmer
     uniqueID: 2478464253
+    locked: 0
+  - name: Ground
+    uniqueID: 1742022287
     locked: 0
   - name: Player
     uniqueID: 1889469237

@@ -21,10 +21,10 @@ public class FarmerScript : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
-        if (player.transform.position.x > transform.position.x + 5f) {
+        if (player.transform.position.x > transform.position.x + 12f) {
             speed = 5f;
             animator.SetBool("IsMoving", true);
-        } else if (player.transform.position.x < transform.position.x - 5f) {
+        } else if (player.transform.position.x < transform.position.x - 12f) {
             speed = -5f;
             animator.SetBool("IsMoving", true);
         } else {
@@ -33,6 +33,9 @@ public class FarmerScript : MonoBehaviour
         }
 
         speedToSet = Mathf.SmoothDamp(speedToSet, speed, ref speedSmoothing, 0.2f);
+    }
+
+    void FixedUpdate() {
         rb2d.velocity = transform.right * speedToSet;
     }
 }
