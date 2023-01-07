@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class FarmerScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public PlayerBehaviour player;
+    public Animator animator;
+    public Rigidbody2D rb2d;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    float speed;
+    float speedToSet;
+    float speedSmoothing;
+    
+    void Update() {
+
+        if (player.transform.position.x > transform.position.x && transform.localScale.x < 0) {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        if (player.transform.position.x < transform.position.x && transform.localScale.x > 0) {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+
+        if (player.transform.position.x > transform.position.x + 5f) {
+            speed = 5f;
+            animator.SetBool("IsMoving", true);
+        } else if (player.transform.position.x < transform.position.x - 5f) {
+            speed = -5f;
+            animator.SetBool("IsMoving", true);
+        } else {
+            speed = 0;
+            animator.SetBool("IsMoving", false);
+        }
+
+        speedToSet = Mathf.SmoothDamp(speedToSet, speed, ref speedSmoothing, 0.2f);
+        rb2d.velocity = transform.right * speedToSet;
     }
 }

@@ -26,7 +26,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.UpArrow) && !isDashing) {
-            speed = 6f;
+            speed = 12f;
         }
         if (Input.GetKeyUp(KeyCode.UpArrow)) {
             speed = 0f;
@@ -39,39 +39,39 @@ public class PlayerBehaviour : MonoBehaviour
             canDash = false;
             isDashing = true;
             StartCoroutine(Dash());
-            speed = 25f;
+            speed = 40f;
         }
 
         if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow)) {
             animator.SetInteger("TurnDir", 1);
             rotationTimer += Time.deltaTime;
             
-            myRotation -= 0.8f;
+            myRotation -= 1.2f;
             if (!isDashing) {
                 if (rotationTimer > 0.3f) {
-                    myRotation -= 0.3f;
+                    myRotation -= 0.5f;
                 }
                 if (rotationTimer > 0.6f) {
-                    myRotation -= 0.3f;
+                    myRotation -= 0.5f;
                 }
             } else {
-                myRotation -= 2f;
+                myRotation -= 3f;
             }
         }
         if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow)) {
             animator.SetInteger("TurnDir", 2);
             rotationTimer += Time.deltaTime;
             
-            myRotation += 0.8f;
+            myRotation += 1.2f;
             if (!isDashing) {
                 if (rotationTimer > 0.3f) {
-                    myRotation += 0.3f;
+                    myRotation += 0.5f;
                 }
                 if (rotationTimer > 0.6f) {
-                    myRotation += 0.3f;
+                    myRotation += 0.5f;
                 }
             } else {
-                myRotation += 2f;
+                myRotation += 3f;
             }
         }
 
@@ -93,7 +93,6 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         speedToSet = Mathf.SmoothDamp(speedToSet, speed, ref speedSmoothing, isDashing ? 0f : 0.2f);
-        rb2d.velocity = transform.up * speedToSet;
 
         rotationToSet = Mathf.SmoothDamp(rotationToSet, myRotation, ref rotationSmoothing, 0.1f);
         transform.eulerAngles = new Vector3(0, 0, rotationToSet);
@@ -103,7 +102,7 @@ public class PlayerBehaviour : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         isDashing = false;
         if (Input.GetKey(KeyCode.UpArrow)) {
-            speed = 6f;
+            speed = 12f;
         } else {
             speed = 0f;
         }
@@ -112,6 +111,6 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     void FixedUpdate() {
-        
+        rb2d.velocity = transform.up * speedToSet;
     }
 }

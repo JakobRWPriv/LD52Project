@@ -175,8 +175,8 @@ MonoBehaviour:
   - {fileID: 881804576}
   - {fileID: 240053309}
   m_Bounds:
-    m_Center: {x: 0.30520004, y: -1.5552002, z: 0}
-    m_Extent: {x: 0.54499996, y: 1.62, z: 0}
+    m_Center: {x: 0.30519903, y: -1.5552002, z: 0}
+    m_Extent: {x: 0.5449999, y: 1.62, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!212 &23511994
@@ -934,7 +934,7 @@ MonoBehaviour:
   - {fileID: 400564250}
   - {fileID: 958950832}
   m_Bounds:
-    m_Center: {x: 0.3042645, y: -1.5580791, z: 0}
+    m_Center: {x: 0.30426544, y: -1.5580791, z: 0}
     m_Extent: {x: 0.545399, y: 1.6228789, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1230,6 +1230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 419820279}
   - component: {fileID: 419820280}
+  - component: {fileID: 419820281}
   m_Layer: 0
   m_Name: Farmer
   m_TagString: Untagged
@@ -1264,6 +1265,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464d3b724aa573c418171b61c77e7180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1695716454}
+  animator: {fileID: 709848304}
+  rb2d: {fileID: 419820281}
+--- !u!50 &419820281
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419820278}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &435289703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,8 +1608,8 @@ MonoBehaviour:
   - {fileID: 2120982488}
   - {fileID: 1947479050}
   m_Bounds:
-    m_Center: {x: -0.8572682, y: -0.7949344, z: 0}
-    m_Extent: {x: 1.0231943, y: 1.170117, z: 0}
+    m_Center: {x: -0.8572676, y: -0.7949344, z: 0}
+    m_Extent: {x: 1.0231947, y: 1.170117, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &648206501
@@ -2291,7 +2316,7 @@ MonoBehaviour:
   - {fileID: 1702796466}
   - {fileID: 1915934324}
   m_Bounds:
-    m_Center: {x: -0.00000047683716, y: 1.9400003, z: 0}
+    m_Center: {x: 0.00000047683716, y: 1.9400003, z: 0}
     m_Extent: {x: 1.8150005, y: 1.9400008, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -2595,7 +2620,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 985423296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.98, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 709848303}
@@ -2704,7 +2729,7 @@ MonoBehaviour:
   - {fileID: 1702796466}
   - {fileID: 1915934324}
   m_Bounds:
-    m_Center: {x: -0.00000047683716, y: 1.9400002, z: 0}
+    m_Center: {x: 0.00000047683716, y: 1.9400002, z: 0}
     m_Extent: {x: 1.8150007, y: 1.9400015, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -2809,7 +2834,7 @@ MonoBehaviour:
   - {fileID: 400564250}
   - {fileID: 958950832}
   m_Bounds:
-    m_Center: {x: 0.30499023, y: -1.5560331, z: 0}
+    m_Center: {x: 0.3049912, y: -1.5560331, z: 0}
     m_Extent: {x: 0.5451914, y: 1.6208329, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -3953,8 +3978,8 @@ MonoBehaviour:
   - {fileID: 2120982488}
   - {fileID: 1947479050}
   m_Bounds:
-    m_Center: {x: -0.8572682, y: -0.79493475, z: 0}
-    m_Extent: {x: 1.0231943, y: 1.1701174, z: 0}
+    m_Center: {x: -0.8572676, y: -0.79493475, z: 0}
+    m_Extent: {x: 1.0231947, y: 1.1701174, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &1655476568
@@ -5088,8 +5113,8 @@ MonoBehaviour:
   - {fileID: 881804576}
   - {fileID: 240053309}
   m_Bounds:
-    m_Center: {x: 0.3079498, y: -1.5640103, z: 0}
-    m_Extent: {x: 0.5501494, y: 1.62881, z: 0}
+    m_Center: {x: 0.30794966, y: -1.5640103, z: 0}
+    m_Extent: {x: 0.55014956, y: 1.62881, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!212 &2000319883
