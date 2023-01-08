@@ -1191,7 +1191,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &80456029
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12274,6 +12274,7 @@ MonoBehaviour:
   warning: {fileID: 1545032714}
   cameraWarning: {fileID: 1542014391}
   canBeOutsideCamera: 1
+  canBeOutsideRight: 1
 --- !u!95 &531969801
 Animator:
   serializedVersion: 3
@@ -21174,6 +21175,7 @@ MonoBehaviour:
   warning: {fileID: 1233091397}
   cameraWarning: {fileID: 1638238994}
   canBeOutsideCamera: 1
+  canBeOutsideRight: 0
 --- !u!95 &823923727
 Animator:
   serializedVersion: 3
@@ -23881,10 +23883,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -29305,6 +29307,7 @@ MonoBehaviour:
   warning: {fileID: 766842533}
   cameraWarning: {fileID: 1170949704}
   canBeOutsideCamera: 1
+  canBeOutsideRight: 1
 --- !u!95 &1448640934
 Animator:
   serializedVersion: 3
@@ -30128,6 +30131,7 @@ MonoBehaviour:
   warning: {fileID: 1641043579}
   cameraWarning: {fileID: 0}
   canBeOutsideCamera: 0
+  canBeOutsideRight: 0
 --- !u!95 &1505120895
 Animator:
   serializedVersion: 3
@@ -30213,6 +30217,7 @@ MonoBehaviour:
   warning: {fileID: 579740498}
   cameraWarning: {fileID: 1669762646}
   canBeOutsideCamera: 1
+  canBeOutsideRight: 0
 --- !u!95 &1508894035
 Animator:
   serializedVersion: 3
@@ -30320,8 +30325,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -38651,7 +38656,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1743117007
 RectTransform:
   m_ObjectHideFlags: 0
@@ -41410,7 +41415,7 @@ MonoBehaviour:
   highScoreText: {fileID: 1065936938}
   introScreen: {fileID: 80456028}
   gameOverScreen: {fileID: 1743117006}
-  newHighscoreObj: {fileID: 0}
+  newHighscoreObj: {fileID: 1803363371}
   canRestart: 0
 --- !u!4 &1941068249
 Transform:
@@ -43355,8 +43360,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -44565,6 +44570,7 @@ MonoBehaviour:
   warning: {fileID: 893411961}
   cameraWarning: {fileID: 0}
   canBeOutsideCamera: 0
+  canBeOutsideRight: 0
 --- !u!95 &2140326271
 Animator:
   serializedVersion: 3

@@ -38,50 +38,54 @@ public class EyeEnemy : MonoBehaviour
         activateTimer -= Time.deltaTime;
 
         if (activateTimer < 0) {
-            activateTimer = Random.Range(10f, 20f);
+            activateTimer = Random.Range(5f, 10f);
 
             int chanceToAppearMax = (10000) + (gameController.numberOfActiveEyes * 3);
 
-            if (gameController.gameTime > 30f) {
-                chanceToAppearMax = 11 + (gameController.numberOfActiveEyes * 10);
+            if (gameController.gameTime > 20f) {
+                chanceToAppearMax = 11 + (gameController.numberOfActiveEyes * 3);
+            }
+            if (gameController.gameTime > 40f) {
+                chanceToAppearMax = 10 + (gameController.numberOfActiveEyes * 3);
             }
             if (gameController.gameTime > 60f) {
-                chanceToAppearMax = 10 + (gameController.numberOfActiveEyes * 10);
+                chanceToAppearMax = 9 + (gameController.numberOfActiveEyes * 3);
             }
-            if (gameController.gameTime > 90f) {
-                chanceToAppearMax = 9 + (gameController.numberOfActiveEyes * 10);
+            if (gameController.gameTime > 80f) {
+                chanceToAppearMax = 8 + (gameController.numberOfActiveEyes * 3);
+            }
+            if (gameController.gameTime > 100f) {
+                chanceToAppearMax = 7 + (gameController.numberOfActiveEyes * 3);
             }
             if (gameController.gameTime > 120f) {
-                chanceToAppearMax = 8 + (gameController.numberOfActiveEyes * 10);
+                chanceToAppearMax = 6 + (gameController.numberOfActiveEyes * 3);
             }
-            if (gameController.gameTime > 150f) {
-                chanceToAppearMax = 7 + (gameController.numberOfActiveEyes * 10);
+            if (gameController.gameTime > 140f) {
+                chanceToAppearMax = 5 + (gameController.numberOfActiveEyes * 3);
+            }
+            if (gameController.gameTime > 160f) {
+                chanceToAppearMax = 4 + (gameController.numberOfActiveEyes * 3);
             }
             if (gameController.gameTime > 180f) {
-                chanceToAppearMax = 6 + (gameController.numberOfActiveEyes * 10);
+                chanceToAppearMax = 3 + (gameController.numberOfActiveEyes * 3);
             }
-            if (gameController.gameTime > 210f) {
-                chanceToAppearMax = 5 + (gameController.numberOfActiveEyes * 10);
+            if (gameController.gameTime > 200f) {
+                chanceToAppearMax = 2 + (gameController.numberOfActiveEyes * 3);
+            }
+            if (gameController.gameTime > 220f) {
+                chanceToAppearMax = 2 + (gameController.numberOfActiveEyes * 2);
             }
             if (gameController.gameTime > 240f) {
-                chanceToAppearMax = 4 + (gameController.numberOfActiveEyes * 10);
-            }
-            if (gameController.gameTime > 270f) {
-                chanceToAppearMax = 3 + (gameController.numberOfActiveEyes * 10);
-            }
-            if (gameController.gameTime > 300f) {
-                chanceToAppearMax = 2 + (gameController.numberOfActiveEyes * 10);
+                chanceToAppearMax = 2 + (gameController.numberOfActiveEyes);
             }
 
-            if (isSecondaryEye ) {
+            if (isSecondaryEye) {
                 chanceToAppearMax = chanceToAppearMax * 2;
             }
 
             int ran = Random.Range(0, chanceToAppearMax);
             if (ran == 0 && !isActive) {
                 Activate();
-            } else {
-                print("FAILED");
             }
         }
 

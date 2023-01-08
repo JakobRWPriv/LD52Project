@@ -33,13 +33,9 @@ public class PlayerBehaviour : MonoBehaviour
     public SpriteRenderer[] throwHandSprites;
     public Color heldFingersColor;
     
-    void Start() {
-        
-    }
-
     void Update() {
         if (!gameController.gameHasStarted)  {
-            speed = 0f;
+            speedToSet = 0;
             return;
         }
 

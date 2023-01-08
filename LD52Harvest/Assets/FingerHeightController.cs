@@ -26,6 +26,7 @@ public class FingerHeightController : MonoBehaviour
     public GameObject cameraWarning;
 
     public bool canBeOutsideCamera;
+    public bool canBeOutsideRight;
 
     void Start() {
         Color chosenColor = gameController.possiblePlantColors[0];
@@ -53,15 +54,18 @@ public class FingerHeightController : MonoBehaviour
         if (srs[0].size.y > warningGrowth) {
             warning.SetActive(true);
             if (canBeOutsideCamera) {
-                if (transform.position.x > cameraMovement.transform.position.x + 27f) {
-                    cameraWarning.SetActive(true);
+                if (canBeOutsideRight) {
+                    if (transform.position.x > cameraMovement.transform.position.x + 27f) {
+                        cameraWarning.SetActive(true);
+                    } else {
+                        cameraWarning.SetActive(false);
+                    }
                 } else {
-                    cameraWarning.SetActive(false);
-                }
-                if (transform.position.x < cameraMovement.transform.position.x - 27f) {
-                    cameraWarning.SetActive(true);
-                } else {
-                    cameraWarning.SetActive(false);
+                    if (transform.position.x < cameraMovement.transform.position.x - 27f) {
+                        cameraWarning.SetActive(true);
+                    } else {
+                        cameraWarning.SetActive(false);
+                    }
                 }
             }
         } else {
