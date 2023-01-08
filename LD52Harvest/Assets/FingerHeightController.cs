@@ -30,6 +30,12 @@ public class FingerHeightController : MonoBehaviour
         minimumGrowth = srs[0].size.y;
         plantColor = chosenColor;
         growthSpeed = 0.15f;
+
+        foreach(SpriteRenderer sr in srs) {
+            sr.size += new Vector2(0, 1f);
+        }
+        boxCollider.size += new Vector2(0, 1f);
+        boxCollider.gameObject.transform.position += new Vector3(0, 1f * 0.75f, 0);
     }
     
     void Update() {
@@ -72,5 +78,13 @@ public class FingerHeightController : MonoBehaviour
         player.SuccessfulGrab(plantColor);
         boxCollider.size -= new Vector2(0, 2);
         boxCollider.gameObject.transform.position -= new Vector3(0, 2 * 0.75f, 0);
+    }
+
+    public void GetWatered() {
+        foreach(SpriteRenderer sr in srs) {
+            sr.size += new Vector2(0, 0.4f);
+        }
+        boxCollider.size += new Vector2(0, 0.4f);
+        boxCollider.gameObject.transform.position += new Vector3(0, 0.4f * 0.75f, 0);
     }
 }

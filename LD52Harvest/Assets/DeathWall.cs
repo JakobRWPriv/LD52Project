@@ -6,7 +6,7 @@ public class DeathWall : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D otherCollider) {
         if (otherCollider.tag == "Plant") {
-            print("DEATH");
+            //print("DEATH");
         }
     }
 }

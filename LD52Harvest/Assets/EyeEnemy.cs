@@ -7,7 +7,7 @@ public class EyeEnemy : MonoBehaviour
     public FingerHeightController plantTarget;
     public EnemyTear enemyTear;
 
-    float shootTimer = 2f;
+    float shootTimer = 3f;
 
     float myYPos;
     float yPosToSet = 20f;
@@ -23,9 +23,10 @@ public class EyeEnemy : MonoBehaviour
 
         shootTimer -= Time.deltaTime;
         if (shootTimer < 0) {
-            EnemyTear tear = Instantiate(enemyTear, transform.position, Quaternion.identity);
-            tear.GetShot(plantTarget.transform);
-            shootTimer = 2f;
+            EnemyTear tear = Instantiate(enemyTear, transform.position + new Vector3(-0.38f, -0.253f, 0), Quaternion.identity);
+            tear.GetShot(plantTarget);
+            tear.gameObject.SetActive(true);
+            shootTimer = 3f;
         }
     }
 }

@@ -8,6 +8,21 @@ TextureImporter:
   - first:
       213: 4041264543391295679
     second: Eye_1
+  - first:
+      213: 5399526322897337148
+    second: Eye_2
+  - first:
+      213: 2081685935062547032
+    second: Eye_3
+  - first:
+      213: -8677159380823684731
+    second: Eye_4
+  - first:
+      213: -7395859149710649712
+    second: Eye_5
+  - first:
+      213: -3840959177818812698
+    second: Eye_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -112,12 +127,12 @@ TextureImporter:
       name: Eye_0
       rect:
         serializedVersion: 2
-        x: 35
-        y: 277
-        width: 360
-        height: 163
+        x: 20
+        y: 755
+        width: 378
+        height: 260
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -133,12 +148,12 @@ TextureImporter:
       name: Eye_1
       rect:
         serializedVersion: 2
-        x: 86
-        y: 39
-        width: 65
-        height: 141
-      alignment: 9
-      pivot: {x: 0.57130045, y: 0.8821025}
+        x: 21
+        y: 567
+        width: 90
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -146,6 +161,111 @@ TextureImporter:
       bones: []
       spriteID: fb82830d0b4751830800000000000000
       internalID: 4041264543391295679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eye_2
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 768
+        width: 368
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3bbaaf2598feea40800000000000000
+      internalID: 5399526322897337148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eye_3
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 640
+        width: 70
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85a74552452a3ec10800000000000000
+      internalID: 2081685935062547032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eye_4
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 672
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5894e864489849780800000000000000
+      internalID: -8677159380823684731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eye_5
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 550
+        width: 89
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0969cacc941ac5990800000000000000
+      internalID: -7395859149710649712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eye_6
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 555
+        width: 82
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ee45516afb22bac0800000000000000
+      internalID: -3840959177818812698
       vertices: []
       indices: 
       edges: []

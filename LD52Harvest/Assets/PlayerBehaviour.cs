@@ -25,7 +25,8 @@ public class PlayerBehaviour : MonoBehaviour
     bool canDash = true;
 
     public bool isHolding;
-    bool canGrab = true;
+    public bool isThrowing;
+    public bool canGrab = true;
     public SpriteRenderer[] normalHandSprites;
     public SpriteRenderer[] holdingHandSprites;
     public SpriteRenderer[] fingerSprites;
@@ -48,7 +49,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Y)) {
-            if (!isHolding && canGrab) {
+            if (!isHolding && canGrab && !isThrowing) {
                 StartCoroutine(Grab());
             }
             if (isHolding) {
@@ -132,6 +133,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     IEnumerator Grab() {
+        print("GRAB");
         canGrab = false;
         animator.SetTrigger("Grab");
         foreach(SpriteRenderer sr in normalHandSprites) {
@@ -145,7 +147,7 @@ public class PlayerBehaviour : MonoBehaviour
         grabCollider.enabled = false;
 
         
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
 
         if (!isHolding) {
             foreach(SpriteRenderer sr in normalHandSprites) {
@@ -155,13 +157,16 @@ public class PlayerBehaviour : MonoBehaviour
                 sr.enabled = false;
             }
         }
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.1f);
 
         if (!isHolding)
             canGrab = true;
     }
 
     IEnumerator Throw() {
+        print("THROW");
+        isThrowing = true;
+        canGrab = false;
         animator.SetTrigger("Throw");
         foreach(SpriteRenderer sr in holdingHandSprites) {
             sr.enabled = false;
@@ -187,12 +192,14 @@ public class PlayerBehaviour : MonoBehaviour
             sr.enabled = true;
         }
 
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.1f);
         canGrab = true;
+        isThrowing = false;
     }
 
     public void SuccessfulGrab(Color color) {
         isHolding = true;
+        canGrab = false;
         heldFingersColor = color;
         foreach(SpriteRenderer sr in fingerSprites) {
             sr.color = heldFingersColor;
@@ -226,7 +233,7 @@ public class PlayerBehaviour : MonoBehaviour
             sr.enabled = true;
         }
 
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.1f);
         canGrab = true;
     }
 

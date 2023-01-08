@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public GameObject pointParticles;
     public Color[] possiblePlantColors;
     public FingerHeightController[] plants;
+    public TimerBar timerBar;
 
     void Start() {
         
@@ -16,5 +17,6 @@ public class GameController : MonoBehaviour
     public void AddPoint() {
         points++;
         pointParticles.SetActive(true);
+        timerBar.AddTime(5f);
     }
 }
