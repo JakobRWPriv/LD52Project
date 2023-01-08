@@ -5,6 +5,7 @@ using UnityEngine;
 public class FingerHeightController : MonoBehaviour
 {
     public GameController gameController;
+    public CameraMovement cameraMovement;
     public PlayerBehaviour player;
     public SpriteRenderer mainSprite;
     public SpriteRenderer[] srs;
@@ -13,12 +14,17 @@ public class FingerHeightController : MonoBehaviour
     public Color plantColor;
     
     public float minimumGrowth;
+    public float warningGrowth;
 
     float alphaToSet;
     float myAlpha;
     float alphaSmoothing;
 
     public float speedIncrease;
+    public GameObject warning;
+    public GameObject cameraWarning;
+
+    public bool canBeOutsideCamera;
 
     void Start() {
         Color chosenColor = gameController.possiblePlantColors[0];
@@ -40,6 +46,24 @@ public class FingerHeightController : MonoBehaviour
     
     void Update() {
         speedIncrease += Time.deltaTime * 0.001f;
+
+        if (srs[0].size.y > warningGrowth) {
+            warning.SetActive(true);
+            if (canBeOutsideCamera) {
+                if (transform.position.x > cameraMovement.transform.position.x + 27f) {
+                    cameraWarning.SetActive(true);
+                } else {
+                    cameraWarning.SetActive(false);
+                }
+                if (transform.position.x < cameraMovement.transform.position.x - 27f) {
+                    cameraWarning.SetActive(true);
+                } else {
+                    cameraWarning.SetActive(false);
+                }
+            }
+        } else {
+            warning.SetActive(false);
+        }
 
         if (srs[0].size.y < minimumGrowth + 1f) {
             myAlpha = 0.4f;

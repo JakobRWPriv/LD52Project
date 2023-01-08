@@ -41,13 +41,14 @@
      <Compile Include="Assets\RandomRotation.cs" />
      <Compile Include="Assets\PlayerBehaviour.cs" />
      <Compile Include="Assets\ThrownFingers.cs" />
+     <Compile Include="Assets\TimerBar.cs" />
      <Compile Include="Assets\GameController.cs" />
      <Compile Include="Assets\CameraMovement.cs" />
      <Compile Include="Assets\DeathWall.cs" />
      <Compile Include="Assets\EnemyTear.cs" />
      <Compile Include="Assets\PlantCollider.cs" />
      <Compile Include="Assets\FarmerScript.cs" />
-     <Compile Include="Assets\TimerBar.cs" />
+     <Compile Include="Assets\EyeWarning.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

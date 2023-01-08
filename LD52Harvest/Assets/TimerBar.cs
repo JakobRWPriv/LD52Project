@@ -24,6 +24,6 @@ public class TimerBar : MonoBehaviour
     }
 
     public void UpdateBarFill() {
-        timerBar.sizeDelta = new Vector2(remainingTime * (1000f / 60f), timerBar.sizeDelta.y);
+        timerBar.sizeDelta = new Vector2(remainingTime * (867f / 60f), timerBar.sizeDelta.y);
     }
 }
