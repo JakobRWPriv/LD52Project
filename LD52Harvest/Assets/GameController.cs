@@ -7,9 +7,9 @@ public class GameController : MonoBehaviour
     public int points;
     public GameObject pointParticles;
     public Color[] possiblePlantColors;
+    public FingerHeightController[] plants;
 
-    void Start()
-    {
+    void Start() {
         
     }
 
