@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyTear : MonoBehaviour
 {
     public FingerHeightController plantTarget;
+    public GameObject tearParticles;
 
     void OnEnable() {
         Vector2 direction = (Vector2)plantTarget.transform.position - (Vector2)transform.position;
@@ -21,12 +22,13 @@ public class EnemyTear : MonoBehaviour
     }
 
     void Update() {
-        transform.position = Vector3.MoveTowards(transform.position, plantTarget.transform.position, 13f * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, plantTarget.transform.position + new Vector3(0, -1f, 0), 20f * Time.deltaTime);
     }
 
     void OnTriggerEnter2D(Collider2D otherCollider) {
         if (otherCollider.tag == "Ground") {
             plantTarget.GetWatered();
+            Instantiate(tearParticles, transform.position += new Vector3(0, -0.5f, 0), Quaternion.identity);
             Destroy(gameObject);
         }
     }

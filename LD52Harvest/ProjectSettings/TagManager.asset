@@ -9,6 +9,8 @@ TagManager:
   - Ground
   - DeathWall
   - Plant
+  - ThrownFingers
+  - GroundNonTrigger
   layers:
   - Default
   - TransparentFX
@@ -16,8 +18,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Projectile
+  - Ground
   - 
   - 
   - 
@@ -51,6 +53,9 @@ TagManager:
     locked: 0
   - name: Plants
     uniqueID: 1410393627
+    locked: 0
+  - name: Tear
+    uniqueID: 773228397
     locked: 0
   - name: Farmer
     uniqueID: 2478464253
