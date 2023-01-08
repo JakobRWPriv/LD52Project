@@ -51,6 +51,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Y)) {
             if (!isHolding && canGrab && !isThrowing) {
                 StartCoroutine(Grab());
+                AudioHandler.Instance.PlaySound(AudioHandler.Instance.Grab, 0.5f, Random.Range(0.9f, 1.1f));
             }
             if (isHolding) {
                 StartCoroutine(Throw());
@@ -121,6 +122,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     IEnumerator Dash() {
+        AudioHandler.Instance.PlaySound(AudioHandler.Instance.Dash, 0.5f, Random.Range(1.4f, 1.6f));
         yield return new WaitForSeconds(0.2f);
         isDashing = false;
         if (Input.GetKey(KeyCode.UpArrow)) {
@@ -133,7 +135,6 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     IEnumerator Grab() {
-        print("GRAB");
         canGrab = false;
         animator.SetTrigger("Grab");
         foreach(SpriteRenderer sr in normalHandSprites) {
@@ -164,7 +165,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     IEnumerator Throw() {
-        print("THROW");
+        AudioHandler.Instance.PlaySound(AudioHandler.Instance.Throw, 0.5f, Random.Range(1.2f, 1.4f));
         isThrowing = true;
         canGrab = false;
         animator.SetTrigger("Throw");
@@ -198,6 +199,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     public void SuccessfulGrab(Color color) {
+        AudioHandler.Instance.PlaySound(AudioHandler.Instance.GrabSuccess, 1, Random.Range(0.9f, 1.1f));
         isHolding = true;
         canGrab = false;
         heldFingersColor = color;
@@ -212,6 +214,8 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     IEnumerator PutInWheelbarrow() {
+        AudioHandler.Instance.PlaySound(AudioHandler.Instance.IntoWheelbarrow, 1, Random.Range(0.9f, 1.1f));
+
         animator.SetTrigger("Throw");
         foreach(SpriteRenderer sr in holdingHandSprites) {
             sr.enabled = false;

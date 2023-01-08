@@ -12,6 +12,7 @@ public class FingerHeightController : MonoBehaviour
     public BoxCollider2D boxCollider;
     public float growthSpeed;
     public Color plantColor;
+    public Animator animator;
     
     public float minimumGrowth;
     public float warningGrowth;
@@ -35,7 +36,7 @@ public class FingerHeightController : MonoBehaviour
 
         minimumGrowth = srs[0].size.y;
         plantColor = chosenColor;
-        growthSpeed = 0.15f;
+        growthSpeed = 0.08f;
 
         foreach(SpriteRenderer sr in srs) {
             sr.size += new Vector2(0, 1f);
@@ -45,7 +46,7 @@ public class FingerHeightController : MonoBehaviour
     }
     
     void Update() {
-        speedIncrease += Time.deltaTime * 0.001f;
+        speedIncrease += 0.0000001f;
 
         if (srs[0].size.y > warningGrowth) {
             warning.SetActive(true);
@@ -86,6 +87,8 @@ public class FingerHeightController : MonoBehaviour
     public void Grabbed() {
         if (srs[0].size.y < minimumGrowth + 1f) return;
 
+        animator.SetTrigger("Grabbed");
+
         if (srs[0].size.y < minimumGrowth + 2f) {
             foreach(SpriteRenderer sr in srs) {
                 sr.size -= new Vector2(0, 1);
@@ -105,6 +108,7 @@ public class FingerHeightController : MonoBehaviour
     }
 
     public void GetWatered() {
+        animator.SetTrigger("Grabbed");
         foreach(SpriteRenderer sr in srs) {
             sr.size += new Vector2(0, 0.4f);
         }

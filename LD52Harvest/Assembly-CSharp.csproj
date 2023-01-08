@@ -47,8 +47,11 @@
      <Compile Include="Assets\DeathWall.cs" />
      <Compile Include="Assets\EnemyTear.cs" />
      <Compile Include="Assets\PlantCollider.cs" />
-     <Compile Include="Assets\FarmerScript.cs" />
      <Compile Include="Assets\EyeWarning.cs" />
+     <Compile Include="Assets\FarmerScript.cs" />
+     <Compile Include="Assets\AudioHandler.cs" />
+     <Compile Include="Assets\AudioObj.cs" />
+     <Compile Include="Assets\FarmerAnimationSounds.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

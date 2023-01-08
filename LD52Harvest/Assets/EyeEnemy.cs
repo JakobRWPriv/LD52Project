@@ -9,6 +9,7 @@ public class EyeEnemy : MonoBehaviour
     public EnemyTear enemyTear;
     public bool isActive;
     public bool isSecondaryEye;
+    public GameObject deathParticles;
 
     float shootTimer = 3f;
 
@@ -25,6 +26,7 @@ public class EyeEnemy : MonoBehaviour
     }
 
     public void Activate() {
+        AudioHandler.Instance.PlaySound(AudioHandler.Instance.Activate, 0.5f, Random.Range(0.9f, 1.1f));
         isActive = true;
         gameController.numberOfActiveEyes++;
     }
@@ -33,39 +35,39 @@ public class EyeEnemy : MonoBehaviour
         activateTimer -= Time.deltaTime;
 
         if (activateTimer < 0) {
-            activateTimer = Random.Range(5f, 10f);
+            activateTimer = Random.Range(10f, 20f);
 
-            int chanceToAppearMax = (12 * 2) + (gameController.numberOfActiveEyes * 2);
+            int chanceToAppearMax = (10000) + (gameController.numberOfActiveEyes * 3);
 
-            if (gameController.gameTime > 10f) {
-                chanceToAppearMax = 11;
-            }
-            if (gameController.gameTime > 20f) {
-                chanceToAppearMax = 10;
-            }
             if (gameController.gameTime > 30f) {
-                chanceToAppearMax = 9;
-            }
-            if (gameController.gameTime > 40f) {
-                chanceToAppearMax = 8;
-            }
-            if (gameController.gameTime > 50f) {
-                chanceToAppearMax = 7;
+                chanceToAppearMax = 11 + (gameController.numberOfActiveEyes * 10);
             }
             if (gameController.gameTime > 60f) {
-                chanceToAppearMax = 6;
-            }
-            if (gameController.gameTime > 70f) {
-                chanceToAppearMax = 5;
-            }
-            if (gameController.gameTime > 80f) {
-                chanceToAppearMax = 4;
+                chanceToAppearMax = 10 + (gameController.numberOfActiveEyes * 10);
             }
             if (gameController.gameTime > 90f) {
-                chanceToAppearMax = 3;
+                chanceToAppearMax = 9 + (gameController.numberOfActiveEyes * 10);
             }
-            if (gameController.gameTime > 100f) {
-                chanceToAppearMax = 2;
+            if (gameController.gameTime > 120f) {
+                chanceToAppearMax = 8 + (gameController.numberOfActiveEyes * 10);
+            }
+            if (gameController.gameTime > 150f) {
+                chanceToAppearMax = 7 + (gameController.numberOfActiveEyes * 10);
+            }
+            if (gameController.gameTime > 180f) {
+                chanceToAppearMax = 6 + (gameController.numberOfActiveEyes * 10);
+            }
+            if (gameController.gameTime > 210f) {
+                chanceToAppearMax = 5 + (gameController.numberOfActiveEyes * 10);
+            }
+            if (gameController.gameTime > 240f) {
+                chanceToAppearMax = 4 + (gameController.numberOfActiveEyes * 10);
+            }
+            if (gameController.gameTime > 270f) {
+                chanceToAppearMax = 3 + (gameController.numberOfActiveEyes * 10);
+            }
+            if (gameController.gameTime > 300f) {
+                chanceToAppearMax = 2 + (gameController.numberOfActiveEyes * 10);
             }
 
             if (isSecondaryEye ) {
@@ -75,6 +77,8 @@ public class EyeEnemy : MonoBehaviour
             int ran = Random.Range(0, chanceToAppearMax);
             if (ran == 0 && !isActive) {
                 Activate();
+            } else {
+                print("FAILED");
             }
         }
 
@@ -96,6 +100,9 @@ public class EyeEnemy : MonoBehaviour
         if (!isActive) return;
 
         if (otherCollider.tag == "ThrownFingers") {
+            AudioHandler.Instance.PlaySound(AudioHandler.Instance.Die, 0.5f, Random.Range(0.9f, 1.1f));
+            AudioHandler.Instance.PlaySound(AudioHandler.Instance.Die2, 0.5f, Random.Range(0.9f, 1.1f));
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
             isActive = false;
             Destroy(otherCollider.gameObject);
             transform.position = new Vector3(transform.position.x, 20f, 0);
