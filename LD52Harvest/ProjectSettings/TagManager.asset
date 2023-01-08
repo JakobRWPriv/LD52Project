@@ -6,6 +6,9 @@ TagManager:
   tags:
   - PlayerGrab
   - Wheelbarrow
+  - Ground
+  - DeathWall
+  - Plant
   layers:
   - Default
   - TransparentFX
@@ -40,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 4267696133
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -54,6 +60,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1889469237
+    locked: 0
+  - name: Effects
+    uniqueID: 2949772727
     locked: 0
   - name: Foreground
     uniqueID: 2872091189

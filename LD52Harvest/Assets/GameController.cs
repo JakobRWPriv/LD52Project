@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public int points;
+    public GameObject pointParticles;
+    public Color[] possiblePlantColors;
 
     void Start()
     {
@@ -13,5 +15,6 @@ public class GameController : MonoBehaviour
 
     public void AddPoint() {
         points++;
+        pointParticles.SetActive(true);
     }
 }

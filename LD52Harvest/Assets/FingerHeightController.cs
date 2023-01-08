@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class FingerHeightController : MonoBehaviour
 {
+    public GameController gameController;
     public PlayerBehaviour player;
+    public SpriteRenderer mainSprite;
     public SpriteRenderer[] srs;
     public BoxCollider2D boxCollider;
     public float growthSpeed;
@@ -16,28 +18,39 @@ public class FingerHeightController : MonoBehaviour
     float myAlpha;
     float alphaSmoothing;
 
+    public float speedIncrease;
+
     void Start() {
+        Color chosenColor = gameController.possiblePlantColors[0];
+        foreach(SpriteRenderer sr in srs) {
+            sr.color = chosenColor;
+            mainSprite.color = chosenColor;
+        }
+
         minimumGrowth = srs[0].size.y;
-        plantColor = srs[0].color;
-        growthSpeed = Random.Range(0.08f, 0.13f);
+        plantColor = chosenColor;
+        growthSpeed = 0.15f;
     }
     
     void Update() {
+        speedIncrease += Time.deltaTime * 0.001f;
+
         if (srs[0].size.y < minimumGrowth + 1f) {
-            alphaToSet = 255f;
+            myAlpha = 0.4f;
         } else {
-            alphaToSet = 130f;
+            myAlpha = 1f;
         }
         alphaToSet = Mathf.SmoothDamp(alphaToSet, myAlpha, ref alphaSmoothing, 0.1f);
 
         foreach(SpriteRenderer sr in srs) {
-            sr.size += new Vector2(0, growthSpeed * Time.deltaTime);
+            sr.size += new Vector2(0, (growthSpeed + speedIncrease) * Time.deltaTime);
 
             sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, alphaToSet);
+            mainSprite.color = new Color(sr.color.r, sr.color.g, sr.color.b, alphaToSet);
         }
 
-        boxCollider.size += new Vector2(0, growthSpeed * Time.deltaTime);
-        boxCollider.gameObject.transform.position += new Vector3(0, (growthSpeed * 0.75f) * Time.deltaTime, 0);
+        boxCollider.size += new Vector2(0, (growthSpeed + speedIncrease) * Time.deltaTime);
+        boxCollider.gameObject.transform.position += new Vector3(0, ((growthSpeed + speedIncrease) * 0.75f) * Time.deltaTime, 0);
     }
 
     public void Grabbed() {

@@ -21,11 +21,11 @@ public class FarmerScript : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
-        if (player.transform.position.x > transform.position.x + 12f) {
-            speed = 5f;
+        if (player.transform.position.x > transform.position.x + 12f && transform.position.x < 11f) {
+            speed = 3f;
             animator.SetBool("IsMoving", true);
         } else if (player.transform.position.x < transform.position.x - 12f) {
-            speed = -5f;
+            speed = -3f;
             animator.SetBool("IsMoving", true);
         } else {
             speed = 0;

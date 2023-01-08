@@ -30,6 +30,7 @@ public class PlayerBehaviour : MonoBehaviour
     public SpriteRenderer[] holdingHandSprites;
     public SpriteRenderer[] fingerSprites;
     public SpriteRenderer[] throwHandSprites;
+    public Color heldFingersColor;
     
     void Start() {
         
@@ -75,7 +76,7 @@ public class PlayerBehaviour : MonoBehaviour
                     myRotation -= (myRotationSpeed * 0.6f) * Time.deltaTime;
                 }
             } else {
-                myRotation -= (myRotationSpeed * 3) * Time.deltaTime;
+                myRotation -= (myRotationSpeed * 4) * Time.deltaTime;
             }
         }
         if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow)) {
@@ -91,7 +92,7 @@ public class PlayerBehaviour : MonoBehaviour
                     myRotation += (myRotationSpeed * 0.6f) * Time.deltaTime;
                 }
             } else {
-                myRotation += (myRotationSpeed * 3) * Time.deltaTime;
+                myRotation += (myRotationSpeed * 4) * Time.deltaTime;
             }
         }
 
@@ -144,7 +145,7 @@ public class PlayerBehaviour : MonoBehaviour
         grabCollider.enabled = false;
 
         
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.3f);
 
         if (!isHolding) {
             foreach(SpriteRenderer sr in normalHandSprites) {
@@ -154,12 +155,10 @@ public class PlayerBehaviour : MonoBehaviour
                 sr.enabled = false;
             }
         }
+        yield return new WaitForSeconds(0.05f);
 
-        yield return new WaitForSeconds(0.2f);
-        
-        if (!isHolding) {
+        if (!isHolding)
             canGrab = true;
-        }
     }
 
     IEnumerator Throw() {
@@ -176,10 +175,10 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         ThrownFingers fingers = Instantiate(thrownFingers, transform.position, Quaternion.identity);
-        fingers.GetThrown(transform.eulerAngles.z, gameController);
+        fingers.GetThrown(transform.eulerAngles.z, gameController, heldFingersColor);
         fingers.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.3f);
 
         foreach(SpriteRenderer sr in throwHandSprites) {
             sr.enabled = false;
@@ -188,20 +187,53 @@ public class PlayerBehaviour : MonoBehaviour
             sr.enabled = true;
         }
 
-        yield return new WaitForSeconds(0.2f);
-
+        yield return new WaitForSeconds(0.05f);
         canGrab = true;
     }
 
     public void SuccessfulGrab(Color color) {
         isHolding = true;
+        heldFingersColor = color;
         foreach(SpriteRenderer sr in fingerSprites) {
-            sr.color = color;
+            sr.color = heldFingersColor;
             sr.enabled = true;
         }
     }
 
     void FixedUpdate() {
         rb2d.velocity = transform.up * speedToSet;
+    }
+
+    IEnumerator PutInWheelbarrow() {
+        animator.SetTrigger("Throw");
+        foreach(SpriteRenderer sr in holdingHandSprites) {
+            sr.enabled = false;
+        }
+        foreach(SpriteRenderer sr in throwHandSprites) {
+            sr.enabled = true;
+        }
+        isHolding = false;
+        foreach(SpriteRenderer sr in fingerSprites) {
+            sr.enabled = false;
+        }
+
+        yield return new WaitForSeconds(0.3f);
+
+        foreach(SpriteRenderer sr in throwHandSprites) {
+            sr.enabled = false;
+        }
+        foreach(SpriteRenderer sr in normalHandSprites) {
+            sr.enabled = true;
+        }
+
+        yield return new WaitForSeconds(0.05f);
+        canGrab = true;
+    }
+
+    void OnTriggerEnter2D(Collider2D otherCollider) {
+        if (otherCollider.tag == "Wheelbarrow" && isHolding) {
+            gameController.AddPoint();
+            StartCoroutine(PutInWheelbarrow());
+        }
     }
 }

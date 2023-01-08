@@ -12,5 +12,6 @@ public class CameraMovement : MonoBehaviour
         posX = Mathf.SmoothDamp(transform.position.x, player.transform.position.x, ref velocity.x, 0.3f);
 
         transform.position = new Vector3(posX, 0, -1);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -4f, 31.5f), 0, -1);
     }
 }
