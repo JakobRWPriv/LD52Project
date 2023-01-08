@@ -46,6 +46,8 @@ public class FingerHeightController : MonoBehaviour
     }
     
     void Update() {
+        if (!gameController.gameHasStarted) return;
+        
         speedIncrease += 0.0000001f;
 
         if (srs[0].size.y > warningGrowth) {

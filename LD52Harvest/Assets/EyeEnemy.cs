@@ -29,9 +29,12 @@ public class EyeEnemy : MonoBehaviour
         AudioHandler.Instance.PlaySound(AudioHandler.Instance.Activate, 0.5f, Random.Range(0.9f, 1.1f));
         isActive = true;
         gameController.numberOfActiveEyes++;
+        shootTimer = 0;
     }
 
     void Update() {
+        if (!gameController.gameHasStarted) return;
+        
         activateTimer -= Time.deltaTime;
 
         if (activateTimer < 0) {

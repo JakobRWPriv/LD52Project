@@ -38,6 +38,11 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     void Update() {
+        if (!gameController.gameHasStarted)  {
+            speed = 0f;
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.UpArrow) && !isDashing) {
             speed = 12f;
         }

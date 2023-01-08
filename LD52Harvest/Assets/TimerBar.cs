@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class TimerBar : MonoBehaviour
 {
+    public GameController gameController;
     public RectTransform timerBar;
     float remainingTime = 60f;
 
     void Update() {
+        if (!gameController.gameHasStarted) return;
+
         remainingTime -= Time.deltaTime;
         UpdateBarFill();
 
         if (remainingTime < 0) {
-            //print("TIME OUT");
+            gameController.GameOver(1);
         }
     }
 
